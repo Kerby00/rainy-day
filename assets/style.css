@@ -1,0 +1,30 @@
+* {
+    font-family: 'Kanit', 'sans-serif';
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.activites {
+    display: inline;
+    float: left;
+}
+
+.jokes {
+    display: inline;
+    float: left;
+    padding-left: 10vh;
+}
+
+.content-container {
+    margin-top: 6vh;
+    display: flex;
+    justify-content: center;
+}
