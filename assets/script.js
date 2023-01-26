@@ -1,11 +1,13 @@
 var boredQueryUrl = "http://www.boredapi.com/api/activity/"
-var jokeQueryUrl= "https://official-joke-api.appspot.com/jokes/random"
+var jokeQueryUrl= "https://official-joke-api.appspot.com/jokes/"
+
 
 var boredType;
 var boredParticipants;
 var boredMinPrice;
 var boredMaxPrice;
-var jokeType;
+
+
 
 
 
@@ -44,7 +46,14 @@ fetch(boredQueryUrl)
 
 }
 //retrieve data from joke api and log to console
-fetch(jokeQueryUrl)
+
+function randomJoke(){
+
+    var jokeTypeElement = document.getElementById('joke-type');
+    var jokeTypeValue = jokeTypeElement.value;
+    console.log(jokeQueryUrl + "type="+jokeTypeValue);
+
+fetch(jokeQueryUrl + "type="+jokeTypeValue)
     .then(function(response){
         return response.json();
     })
@@ -53,9 +62,10 @@ fetch(jokeQueryUrl)
 
     })
 
-
+}
 
 var randomBtn  = document.getElementById('randomBtn');
+var jokeBtn = document.getElementById('joke-btn')
 randomBtn.addEventListener('click', randomActivity);
+jokeBtn.addEventListener('click',randomJoke)
 
-//randomActivity()
