@@ -28,3 +28,7 @@ h2 {
     display: flex;
     justify-content: center;
 }
+
+#random-activity {
+    list-style: none;
+}
