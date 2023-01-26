@@ -7,9 +7,23 @@ h1 {
     justify-content: center;
 }
 
+.header {
+    background-color: #EB5353;
+    color: #F9D923;
+}
+
+.container {
+    background-color: #36AE7C;
+    margin-left: 50vh;
+    margin-right: 50vh;
+    padding: 6vh;
+}
+
 h2 {
     display: flex;
     justify-content: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 
 .activites {
@@ -31,4 +45,8 @@ h2 {
 
 #random-activity {
     list-style: none;
+}
+
+body {
+    background-color: #187498;
 }
