@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,8 @@
     <link rel="stylesheet" href="assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@800&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@800&family=Quattrocento+Sans&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -20,9 +22,9 @@
             <div class="activites">
                 <img src="assets/images/raincloud.jpg" alt="raincloud">
                 <h2>Activites</h2>
-                <form>
+                <div id="activity-submit">
                     <h3>Activity Type:</h3>
-                    <select>
+                    <select id="activity-id">
                         <option>education</option>
                         <option>recreational</option>
                         <option>social</option>
@@ -33,12 +35,12 @@
                         <option>music</option>
                         <option>busywork</option>
                     </select>
-                
+
                     <h3>Number of participants: 1-10</h3>
-                        <textarea rows="1"></textarea>
-                    <button>Sumbit</button>
-                
-                </form>
+                    <textarea id="participants" rows="1"></textarea>
+                    <button id="sub-bttn">Submit</button>
+
+                </div>
                 <button id="randomBtn">Random!</button>
             </div>
             <div class="jokes">
@@ -56,12 +58,12 @@
                 
             </div>
         </section>
-        <Section >
+        <Section>
             <div id="random-activity"></div>
 
         </Section>
     </main>
-<script src ="./assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>
