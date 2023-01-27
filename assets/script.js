@@ -13,8 +13,10 @@ var boredurl = "http://www.boredapi.com/api/activity?"
 var boredMinPrice;
 var boredMaxPrice;
 
-
-
+//greg 1/26 added function to reload page when clear button is clicked.
+function clear() {
+    location.reload()
+}
 
 
 function randomActivity() {
@@ -112,13 +114,15 @@ fetch(jokeQueryUrl + "type="+jokeTypeValue)
 }
 
 var randomBtn  = document.getElementById('randomBtn');
-var jokeBtn = document.getElementById('joke-btn')
+var jokeBtn = document.getElementById('joke-btn');
+var clearBtn = document.getElementById('clear-btn');  //added by greg 1/26 for clear button functionality
 
 var activitySub = document.getElementById('sub-bttn')
 
 
 randomBtn.addEventListener('click', randomActivity);
 jokeBtn.addEventListener('click',randomJoke)
+clearBtn.addEventListener('click', clear) //added by greg 1/26 for clear button functionality
 
 function test() {
     console.log('test')
