@@ -98,10 +98,9 @@ function activity(event) {
 function randomJoke(){
 
     var jokeTypeElement = document.getElementById('joke-type');
-    var jokeTypeValue = jokeTypeElement.value;
-    console.log(jokeQueryUrl + "type="+jokeTypeValue);
+    var jokeTypeValue = jokeTypeElement.value;   
 
-fetch(jokeQueryUrl + "type="+jokeTypeValue)
+fetch(jokeQueryUrl + jokeTypeValue + '/random')
     .then(function(response){
 
         return response.json();
