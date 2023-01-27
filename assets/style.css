@@ -50,3 +50,7 @@ h2 {
 body {
     background-color: #187498;
 }
+
+.hidden{
+    display: none;
+}

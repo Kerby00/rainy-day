@@ -35,13 +35,14 @@
                         <option>music</option>
                         <option>busywork</option>
                     </select>
-
-                    <h3>Number of participants: 1-10</h3>
-                    <textarea id="participants" rows="1"></textarea>
+                    <div id="hide" class='hidden'>
+                    <h3>If picking a Social activity, select number of participants: 1-5</h3>
+                    <textarea  id="participants" rows="1">1</textarea>
+                    </div>
                     <button id="sub-bttn">Submit</button>
 
                 </div>
-                <button id="randomBtn">Random!</button>
+                <button id="randomBtn">Random</button>
             </div>
             <div class="jokes">
                 <i class="fa-regular fa-face-grin-tears fa-9x"></i>
@@ -58,7 +59,7 @@
                 
             </div>
         </section>
-        <div><button id="clear-btn">Clear</button></div> !<!--added by greg 1/26 to reload page to clear results-->
+        <div><button id="clear-btn">Clear</button></div><!--added by greg 1/26 to reload page to clear results-->
         <Section>
             <div id="random-activity"></div>
             <div id="joke-display"></div>
