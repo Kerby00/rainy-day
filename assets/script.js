@@ -1,15 +1,6 @@
 var boredQueryUrl = "http://www.boredapi.com/api/activity/"
-
-var jokeQueryUrl= "https://official-joke-api.appspot.com/jokes/"
-
-
+var jokeQueryUrl = "https://official-joke-api.appspot.com/jokes/"
 var boredurl = "http://www.boredapi.com/api/activity?"
-
-
-//var boredType = document.getElementById('activity-id');
-//var boredTypeVal = boredType.value;
-//var boredParticipants = document.getElementById("participants");
-//var boredParticipantsVal = boredParticipants.value;
 var boredMinPrice;
 var boredMaxPrice;
 
@@ -53,6 +44,24 @@ function randomActivity() {
         })
 
 }
+function socialparts(e){
+    var selection = e.target.value
+    console.log(selection)
+if(selection === 'social'){
+    var rmhidden = document.getElementsByClassName('hidden');
+    console.log(rmhidden[0])
+    console.log(document.getElementById('hide'))
+    rmhidden[0].classList.remove('hidden')
+}
+else if (selection === 'social' && boredParticipantsVal >= 6) {
+    
+    window.alert("Max Social Activity participants is 5")
+    window.location.reload()
+} else {
+    var hideEl = document.getElementById('hide')
+    hideEl.classList.add('hidden')
+}
+}
 
 function activity(event) {
     event.preventDefault()
@@ -94,37 +103,36 @@ function activity(event) {
 }
 //retrieve data from joke api and log to console
 
-
-function randomJoke(){
+function randomJoke() {
 
     var jokeTypeElement = document.getElementById('joke-type');
-    var jokeTypeValue = jokeTypeElement.value;   
+    var jokeTypeValue = jokeTypeElement.value;
 
-fetch(jokeQueryUrl + jokeTypeValue + '/random')
-    .then(function(response){
+    fetch(jokeQueryUrl + jokeTypeValue + '/random')
+        .then(function (response) {
 
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data)
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data)
 
-    })
+        })
 
 }
 
-var randomBtn  = document.getElementById('randomBtn');
+var randomBtn = document.getElementById('randomBtn');
 var jokeBtn = document.getElementById('joke-btn');
 var clearBtn = document.getElementById('clear-btn');  //added by greg 1/26 for clear button functionality
-
+var changesocial = document.getElementById('activity-id')
 var activitySub = document.getElementById('sub-bttn')
 
+changesocial.addEventListener('change', socialparts)
 activitySub.addEventListener('click', activity)
 randomBtn.addEventListener('click', randomActivity);
-jokeBtn.addEventListener('click',randomJoke)
+jokeBtn.addEventListener('click', randomJoke)
 clearBtn.addEventListener('click', clear) //added by greg 1/26 for clear button functionality
 
-function test() {
-    console.log('test')
-}
+
+
 
 
