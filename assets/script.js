@@ -119,7 +119,7 @@ var clearBtn = document.getElementById('clear-btn');  //added by greg 1/26 for c
 
 var activitySub = document.getElementById('sub-bttn')
 
-
+activitySub.addEventListener('click', activity)
 randomBtn.addEventListener('click', randomActivity);
 jokeBtn.addEventListener('click',randomJoke)
 clearBtn.addEventListener('click', clear) //added by greg 1/26 for clear button functionality
