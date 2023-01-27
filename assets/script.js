@@ -106,7 +106,19 @@ fetch(jokeQueryUrl + jokeTypeValue + '/random')
         return response.json();
     })
     .then(function (data) {
-        console.log(data)
+        console.log(data[0].setup);
+        var setup = data[0].setup;
+        var punchline = data[0].punchline;
+
+        var setupElement = document.createElement('h2');
+        var punchlineElement = document.createElement('h4');
+
+        setupElement.innerHTML = setup;
+        console.log(setupElement)
+        punchlineElement.innerHTML = punchline;
+
+        document.getElementById('joke-display').appendChild(setupElement);
+        document.getElementById('joke-display').appendChild(punchlineElement);
 
     })
 
