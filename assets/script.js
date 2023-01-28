@@ -11,7 +11,6 @@ function clear() {
 
 
 function randomActivity() {
-
     //retrieve data from activity api and log to console
     fetch(boredQueryUrl)
         .then(function (response) {
@@ -22,27 +21,26 @@ function randomActivity() {
             var type = data.type;
             var participants = data.participants;
             var link = data.link;
-
-            var typeElement = document.createElement('li');
-            var activityElement = document.createElement('h3');
-            var participantsElement = document.createElement('li');
-            var linkElement = document.createElement('li');
-
-            typeElement.innerHTML = type;
-            activityElement.innerHTML = activity;
-            participantsElement.innerHTML = participants;
-            linkElement.innerHTML = link;
-
-
-
-            document.getElementById('random-activity').appendChild(activityElement);
-            document.getElementById('random-activity').appendChild(typeElement);
-            document.getElementById('random-activity').appendChild(participantsElement);
-            document.getElementById('random-activity').appendChild(linkElement);
-
-
+            if (document.getElementById('random-activity').firstChild == null) {
+                var typeElement = document.createElement('li');
+                var activityElement = document.createElement('h3');
+                var participantsElement = document.createElement('li');
+                var linkElement = document.createElement('li');
+                typeElement.innerHTML = type;
+                activityElement.innerHTML = activity;
+                participantsElement.innerHTML = participants;
+                linkElement.innerHTML = link;
+                document.getElementById('random-activity').appendChild(activityElement);
+                document.getElementById('random-activity').appendChild(typeElement);
+                document.getElementById('random-activity').appendChild(participantsElement);
+                document.getElementById('random-activity').appendChild(linkElement);
+            } else {
+                document.getElementById('random-activity').children[0].innerHTML = activity;
+                document.getElementById('random-activity').children[1].innerHTML = type;
+                document.getElementById('random-activity').children[2].innerHTML = participants;
+                document.getElementById('random-activity').children[3].innerHTML = link;
+            }
         })
-
 }
 function socialparts(e){
     var selection = e.target.value
