@@ -42,21 +42,21 @@ function randomActivity() {
             }
         })
 }
-function socialparts(e){
+function socialparts(e) {
     var selection = e.target.value
     var socialParticipants = document.getElementById("participants");
     var socialParticipantsVal = socialParticipants.value;
     console.log(selection)
     console.log(socialParticipantsVal)
-if(selection === 'social'){
-    var rmhidden = document.getElementsByClassName('hidden');
-    console.log(rmhidden[0])
-    console.log(document.getElementById('hide'))
-    rmhidden[0].classList.remove('hidden')
-} else {
-    var hideEl = document.getElementById('hide')
-    hideEl.classList.add('hidden')
-}
+    if (selection === 'social') {
+        var rmhidden = document.getElementsByClassName('hidden');
+        console.log(rmhidden[0])
+        console.log(document.getElementById('hide'))
+        rmhidden[0].classList.remove('hidden')
+    } else {
+        var hideEl = document.getElementById('hide')
+        hideEl.classList.add('hidden')
+    }
 }
 
 function activity(event) {
@@ -109,30 +109,112 @@ function randomJoke() {
     var jokeTypeElement = document.getElementById('joke-type');
     var jokeTypeValue = jokeTypeElement.value;
 
+
+
     fetch(jokeQueryUrl + jokeTypeValue + '/random')
         .then(function (response) {
 
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data[0].setup);
-        var setup = data[0].setup;
-        var punchline = data[0].punchline;
-        var setupElement = document.createElement('h2');
-        var punchlineElement = document.createElement('h4');
-        if (document.getElementById('joke-display').firstChild == null){
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data[0].setup);
+            var setup = data[0].setup;
+            var punchline = data[0].punchline;
+            var currentJoke = {
+                setup: data[0].setup,
+                punchline: data[0].punchline,
+            }
             var setupElement = document.createElement('h2');
             var punchlineElement = document.createElement('h4');
-            setupElement.innerHTML = setup;
-            punchlineElement.innerHTML = punchline;
-            document.getElementById('joke-display').appendChild(setupElement);
-            document.getElementById('joke-display').appendChild(punchlineElement);
-        } else {
-            document.getElementById('joke-display').children[0].innerHTML = setup;
-            document.getElementById('joke-display').children[1].innerHTML = punchline;
-        }
-        })
+            if (document.getElementById('joke-display').firstChild == null) {
 
+                var setupElement = document.createElement('h2');
+                var punchlineElement = document.createElement('h4');
+                var favElement = document.createElement('button')
+
+                setupElement.innerHTML = setup;
+                punchlineElement.innerHTML = punchline;
+                favElement.innerHTML = 'Save As Favorite';
+                favElement.id = 'fav-btn';
+
+                document.getElementById('joke-display').appendChild(setupElement);
+                document.getElementById('joke-display').appendChild(punchlineElement);
+                document.getElementById('joke-display').appendChild(favElement);
+
+
+            } else {
+                document.getElementById('joke-display').children[0].innerHTML = setup;
+                document.getElementById('joke-display').children[1].innerHTML = punchline;
+            }
+
+            localStorage.setItem('currentJoke', JSON.stringify(currentJoke));
+
+        })
+}
+
+//function to save current displayed joke to local storage as a favorite.  greg 1/27/23
+function jokeFavorite() {
+    var favJoke = document.getElementById('joke-display').children[0].innerHTML;
+    console.log(favJoke)
+    if (localStorage.getItem("favJokes") == null) {
+        favJokeArray = JSON.parse('[]');
+        var currJoke = JSON.parse(localStorage.getItem('currentJoke'));
+        console.log(currJoke);
+        favJokeArray.push(currJoke);
+        localStorage.setItem('favJokes', JSON.stringify(favJokeArray));
+    } else {
+        var currJoke = JSON.parse(localStorage.getItem('currentJoke'));
+        var favJokeArray = JSON.parse(localStorage.getItem('favJokes'));
+        favJokeArray.push(currJoke);
+        localStorage.setItem('favJokes', JSON.stringify(favJokeArray));
+    }
+
+}
+
+//display favorite jokes in a table. greg 1/27/23
+function displayFavoriteJokes() {
+
+    var favJokesElement = document.getElementById('fav-joke-display');
+    var tableElement = document.createElement('table');
+    tableElement.id = "fav-jokes-table";
+    console.log(document.getElementById('fav-jokes-table') != null);
+    
+    if(document.getElementById('fav-jokes-table') != null){
+        document.getElementById('fav-jokes-table').remove()
+    } 
+    
+    var tableTitleRow =document.createElement('tr')
+    var tableTitle = 'Favorite Jokes'
+    var tableRow = document.createElement('tr')
+    var tableHeaderArray = ['Setup', 'Punchline'];
+    
+    tableTitleRow.innerHTML = tableTitle;
+    tableElement.appendChild(tableTitleRow);
+
+    for (let i = 0; i < tableHeaderArray.length; i++) {
+
+        var tableHeader = document.createElement('th');
+        var headerText = tableHeaderArray[i];
+        tableHeader.innerHTML = headerText;
+        tableRow.appendChild(tableHeader)
+    }
+    tableElement.appendChild(tableRow);
+    favJokesElement.appendChild(tableElement);
+
+    var favJokesArray = JSON.parse(localStorage.getItem('favJokes'));
+    for (let j = 0; j < favJokesArray.length; j++) {
+
+        var rowEl = document.createElement('tr');
+        var setupEl = document.createElement('td');
+        var punchlineEl = document.createElement('td');
+        setupEl.innerHTML = favJokesArray[j].setup;
+        punchlineEl.innerHTML = favJokesArray[j].punchline;
+
+        rowEl.appendChild(setupEl);
+        rowEl.appendChild(punchlineEl);
+
+        tableElement.appendChild(rowEl);
+    }
 }
 
 var randomBtn = document.getElementById('randomBtn');
@@ -140,14 +222,16 @@ var jokeBtn = document.getElementById('joke-btn');
 var clearBtn = document.getElementById('clear-btn');  //added by greg 1/26 for clear button functionality
 var changesocial = document.getElementById('activity-id')
 var activitySub = document.getElementById('sub-bttn')
+var jokeDisplay = document.getElementById('joke-display') //added by greg 1/27 for save favorite joke
+var favJokesDisplay = document.getElementById('fav-jokes')
 
 changesocial.addEventListener('change', socialparts)
-activitySub.addEventListener('click', activity)
+activitySub.addEventListener('click', activity);
 randomBtn.addEventListener('click', randomActivity);
-jokeBtn.addEventListener('click', randomJoke)
-clearBtn.addEventListener('click', clear) //added by greg 1/26 for clear button functionality
-
-
+jokeBtn.addEventListener('click', randomJoke);
+clearBtn.addEventListener('click', clear); //added by greg 1/26 for clear button functionality
+jokeDisplay.addEventListener('click', jokeFavorite);  //event listener to save current displayed joke as favorite when clicking save as favorite button
+favJokesDisplay.addEventListener('click', displayFavoriteJokes); //event listener for button display favorite jokes
 
 
 
