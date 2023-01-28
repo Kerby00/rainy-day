@@ -118,17 +118,19 @@ function randomJoke() {
         console.log(data[0].setup);
         var setup = data[0].setup;
         var punchline = data[0].punchline;
-
         var setupElement = document.createElement('h2');
         var punchlineElement = document.createElement('h4');
-
-        setupElement.innerHTML = setup;
-        console.log(setupElement)
-        punchlineElement.innerHTML = punchline;
-
-        document.getElementById('joke-display').appendChild(setupElement);
-        document.getElementById('joke-display').appendChild(punchlineElement);
-
+        if (document.getElementById('joke-display').firstChild == null){
+            var setupElement = document.createElement('h2');
+            var punchlineElement = document.createElement('h4');
+            setupElement.innerHTML = setup;
+            punchlineElement.innerHTML = punchline;
+            document.getElementById('joke-display').appendChild(setupElement);
+            document.getElementById('joke-display').appendChild(punchlineElement);
+        } else {
+            document.getElementById('joke-display').children[0].innerHTML = setup;
+            document.getElementById('joke-display').children[1].innerHTML = punchline;
+        }
         })
 
 }
