@@ -46,17 +46,15 @@ function randomActivity() {
 }
 function socialparts(e){
     var selection = e.target.value
+    var socialParticipants = document.getElementById("participants");
+    var socialParticipantsVal = socialParticipants.value;
     console.log(selection)
+    console.log(socialParticipantsVal)
 if(selection === 'social'){
     var rmhidden = document.getElementsByClassName('hidden');
     console.log(rmhidden[0])
     console.log(document.getElementById('hide'))
     rmhidden[0].classList.remove('hidden')
-}
-else if (selection === 'social' && boredParticipantsVal >= 6) {
-    
-    window.alert("Max Social Activity participants is 5")
-    window.location.reload()
 } else {
     var hideEl = document.getElementById('hide')
     hideEl.classList.add('hidden')
@@ -70,6 +68,11 @@ function activity(event) {
     var boredParticipants = document.getElementById("participants");
     var boredParticipantsVal = boredParticipants.value;
     var newboredapi = boredurl + "type=" + boredTypeVal + "&participants=" + boredParticipantsVal
+    if (boredTypeVal === 'social' && boredParticipantsVal >= 6) {
+        window.alert("Max Social Activity participants is 5")
+        boredParticipants.value = ""
+        return;
+    }
     console.log(newboredapi);
     console.log(boredTypeVal, boredParticipantsVal)
     fetch(newboredapi)
