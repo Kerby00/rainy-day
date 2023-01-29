@@ -17,13 +17,12 @@
     <header class="header">
         <h1>Rainy Day Activites and Jokes!</h1>
     </header>
-    <main class="container">
+    <div class="container-activites">
         <section class="content-container">
             <div class="activites">
                 <i class="fa-solid fa-cloud-sun-rain fa-9x"></i>
                 <h2>Activites</h2>
                 <div id="activity-submit">
-                    <h3>Activity Type:</h3>
                     <select id="activity-id">
                         <option>education</option>
                         <option>recreational</option>
@@ -40,12 +39,16 @@
                     <input type="text" id="participants" />
                     </div>
                     <button id="sub-bttn">Submit</button>
-
                 </div>
                 <button id="randomBtn">Random</button>
+                <div id="random-activity"></div>
             </div>
+        </section>
+    </div>
+    <div class="container-jokes">
+        <section class="content-container">
             <div class="jokes">
-                <i class="fa-regular fa-face-grin-tears fa-9x"></i>
+                <i class="fa-solid fa-face-grin-tears fa-9x"></i>
                 <h2>Jokes</h2>
                 <div id="joke-form">
                     <select id="joke-type">
@@ -56,18 +59,15 @@
                     </select>
                     <button id="joke-btn">Submit</button>
                 </div>
-                
+                <section>
+                    <div id="joke-display"></div>
+                    <button id="fav-jokes">Display Favorite Jokes</button>
+                    <div id="fav-joke-display"></div>
+                </section>
             </div>
         </section>
-        <div><button id="clear-btn">Clear</button></div><!--added by greg 1/26 to reload page to clear results-->
-        <Section>
-            <div id="random-activity"></div>
-            <div id="joke-display"></div>
-            <button id="fav-jokes">Display Favorite Jokes</button>
-            <div id="fav-joke-display"></div>
-            
-        </Section>
-    </main>
+    </div>
+    <div class="clear-btn"><button id="clear-btn">Clear</button></div><!--added by greg 1/26 to reload page to clear results-->
     <script src="https://kit.fontawesome.com/52092ab234.js" crossorigin="anonymous"></script>
     <script src="./assets/script.js"></script>
 </body>
