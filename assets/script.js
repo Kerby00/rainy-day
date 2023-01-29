@@ -124,11 +124,11 @@ function randomJoke() {
                 setup: data[0].setup,
                 punchline: data[0].punchline,
             }
-            var setupElement = document.createElement('h2');
-            var punchlineElement = document.createElement('h4');
+            var setupElement = document.createElement('h5');
+            var punchlineElement = document.createElement('h6');
             if (document.getElementById('joke-display').firstChild == null) {
 
-                var setupElement = document.createElement('h2');
+                var setupElement = document.createElement('h5');
                 var punchlineElement = document.createElement('h4');
                 var favElement = document.createElement('button')
 
