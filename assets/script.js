@@ -1,6 +1,6 @@
-var boredQueryUrl = "http://www.boredapi.com/api/activity/"
+var boredQueryUrl = "https://www.boredapi.com/api/activity/"
 var jokeQueryUrl = "https://official-joke-api.appspot.com/jokes/"
-var boredurl = "http://www.boredapi.com/api/activity?"
+var boredurl = "https://www.boredapi.com/api/activity?"
 var boredMinPrice;
 var boredMaxPrice;
 
