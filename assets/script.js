@@ -17,9 +17,9 @@ function randomActivity() {
             return response.json();
         })
         .then(function (data) {
-            var activity = data.activity;
-            var type = data.type;
-            var participants = data.participants;
+            var activity = "Activity:  " + data.activity;
+            var type = "Subject:  " + data.type;
+            var participants = "Participants:  " + data.participants;
             var link = data.link;
             if (document.getElementById('random-activity').firstChild == null) {
                 var typeElement = document.createElement('li');
@@ -79,9 +79,9 @@ function activity(event) {
             return response.json();
         })
         .then(function (data) {
-            var activity = data.activity;
-            var participants = data.participants;
-            var type = data.type;
+            var activity = "Activity:  " + data.activity;
+            var participants = "Participants:  " + data.participants;
+            var type = "Subject:  " + data.type;
             var link = data.link;
             if (document.getElementById('random-activity').firstChild == null) {
                 var typeElement = document.createElement('li');
@@ -124,8 +124,8 @@ function randomJoke() {
         })
         .then(function (data) {
             console.log(data[0].setup);
-            var setup = data[0].setup;
-            var punchline = data[0].punchline;
+            var setup = "Joke: " + data[0].setup;
+            var punchline = "Punchline: " + data[0].punchline;
             var currentJoke = {
                 setup: data[0].setup,
                 punchline: data[0].punchline,
