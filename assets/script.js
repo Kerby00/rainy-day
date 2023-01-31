@@ -54,6 +54,7 @@ function socialparts(e) {
         console.log(document.getElementById('hide'))
         rmhidden[0].classList.remove('hidden')
     } else {
+        socialParticipants.value = ""
         var hideEl = document.getElementById('hide')
         hideEl.classList.add('hidden')
     }
@@ -82,24 +83,29 @@ function activity(event) {
             var participants = data.participants;
             var type = data.type;
             var link = data.link;
+            if (document.getElementById('random-activity').firstChild == null) {
+                var typeElement = document.createElement('li');
+                var activityElement = document.createElement('h3');
+                var participantsElement = document.createElement('li');
+                var linkElement = document.createElement('li');
 
-            var typeElement = document.createElement('li');
-            var activityElement = document.createElement('h3');
-            var participantsElement = document.createElement('li');
-            var linkElement = document.createElement('li');
-
-            typeElement.innerHTML = type;
-            activityElement.innerHTML = activity;
-            participantsElement.innerHTML = participants;
-            linkElement.innerHTML = link;
+                typeElement.innerHTML = type;
+                activityElement.innerHTML = activity;
+                participantsElement.innerHTML = participants;
+                linkElement.innerHTML = link;
 
 
 
-            document.getElementById('random-activity').appendChild(activityElement);
-            document.getElementById('random-activity').appendChild(typeElement);
-            document.getElementById('random-activity').appendChild(participantsElement);
-            document.getElementById('random-activity').appendChild(linkElement);
-
+                document.getElementById('random-activity').appendChild(activityElement);
+                document.getElementById('random-activity').appendChild(typeElement);
+                document.getElementById('random-activity').appendChild(participantsElement);
+                document.getElementById('random-activity').appendChild(linkElement);
+            } else {
+                document.getElementById('random-activity').children[0].innerHTML = activity;
+                document.getElementById('random-activity').children[1].innerHTML = type;
+                document.getElementById('random-activity').children[2].innerHTML = participants;
+                document.getElementById('random-activity').children[3].innerHTML = link;
+            }
         })
 }
 //retrieve data from joke api and log to console
@@ -178,16 +184,16 @@ function displayFavoriteJokes() {
     var tableElement = document.createElement('table');
     tableElement.id = "fav-jokes-table";
     console.log(document.getElementById('fav-jokes-table') != null);
-    
-    if(document.getElementById('fav-jokes-table') != null){
+
+    if (document.getElementById('fav-jokes-table') != null) {
         document.getElementById('fav-jokes-table').remove()
-    } 
-    
-    var tableTitleRow =document.createElement('tr')
+    }
+
+    var tableTitleRow = document.createElement('tr')
     var tableTitle = ''
     var tableRow = document.createElement('tr')
     var tableHeaderArray = ['Setup', 'Punchline'];
-    
+
     tableTitleRow.innerHTML = tableTitle;
     tableElement.appendChild(tableTitleRow);
 
