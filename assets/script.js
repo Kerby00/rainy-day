@@ -174,7 +174,7 @@ function jokeFavorite() {
 //display favorite jokes in a table. greg 1/27/23
 function displayFavoriteJokes() {
 
-    var favJokesElement = document.getElementById('fav-joke-display');
+    var favJokesElement = document.getElementById('popup');
     var tableElement = document.createElement('table');
     tableElement.id = "fav-jokes-table";
     console.log(document.getElementById('fav-jokes-table') != null);
@@ -184,7 +184,7 @@ function displayFavoriteJokes() {
     } 
     
     var tableTitleRow =document.createElement('tr')
-    var tableTitle = 'Favorite Jokes'
+    var tableTitle = ''
     var tableRow = document.createElement('tr')
     var tableHeaderArray = ['Setup', 'Punchline'];
     
@@ -215,6 +215,16 @@ function displayFavoriteJokes() {
 
         tableElement.appendChild(rowEl);
     }
+}
+
+var popup = document.getElementById("popup")
+
+function openPopup() {
+    popup.classList.add("open-popup");
+}
+
+function closePopup() {
+    popup.classList.remove("open-popup")
 }
 
 var randomBtn = document.getElementById('randomBtn');
