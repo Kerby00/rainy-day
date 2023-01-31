@@ -61,13 +61,24 @@
                 </div>
                 <section>
                     <div id="joke-display"></div>
-                    <button id="fav-jokes">Display Favorite Jokes</button>
+                    <button type="submit" id="fav-jokes" onclick="openPopup()">Display Favorite Jokes</button>
                     <div id="fav-joke-display"></div>
                 </section>
             </div>
         </section>
     </div>
-    <div class="clear-btn"><button id="clear-btn">Clear</button></div><!--added by greg 1/26 to reload page to clear results-->
+
+    <div class="joke-dis">
+        <div class="popup" id="popup">
+            <h2>My Favorite Jokes</h2>
+            <button id= "joke-close" type="button" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="clear-btn"><button id="clear-btn">Clear</button></div><!--added by greg 1/26 to reload page to clear results-->
+    </footer>
     <script src="https://kit.fontawesome.com/52092ab234.js" crossorigin="anonymous"></script>
     <script src="./assets/script.js"></script>
 </body>
