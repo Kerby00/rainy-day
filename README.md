@@ -21,7 +21,7 @@ The rainy day application can be accessed at the URL listed at the top of the RE
 
 ## Credits
 
-N/A
+Benjamin Kerby, Noah Redford, Paul Dutile, and Greg Kitchen
 
 ## License
 
